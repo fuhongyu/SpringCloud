@@ -1,0 +1,20 @@
+package cn.tedu.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.jt.common.util.SysResult;
+import cn.tedu.feign.UserFeign;
+
+public class Controller {
+	
+	@Autowired
+	private UserFeign userFeign;
+	
+	@RequestMapping("/user/check/{param}/{typeVal}")
+	public SysResult check(@PathVariable String param, @PathVariable Integer typeVal){
+		return userFeign.check(param, typeVal); 
+	}
+
+}

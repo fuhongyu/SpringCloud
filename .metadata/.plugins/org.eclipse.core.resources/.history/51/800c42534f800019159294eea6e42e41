@@ -1,0 +1,10 @@
+package lelaibei;
+
+public class Day0626 {
+	public static void main(String[] args) {
+		String str1 = new String("beautiful");
+		String str2 = "beautiful";
+		System.out.println(str1.equals(str2));
+	}
+
+}

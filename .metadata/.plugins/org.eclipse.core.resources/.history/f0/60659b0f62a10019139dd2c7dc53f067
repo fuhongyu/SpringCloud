@@ -1,0 +1,15 @@
+package cn.tedu.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
+import cn.tedu.pojo.User;
+
+//mybatis接口，通过注解方式写sql语句，实现CRUD
+public interface UserMapper {
+
+	//查询所有方法
+	@Select("Select * from user")
+	public List<User> findAll();
+}

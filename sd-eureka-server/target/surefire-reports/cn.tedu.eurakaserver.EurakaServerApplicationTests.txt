@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: cn.tedu.eurakaserver.EurakaServerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.012 s - in cn.tedu.eurakaserver.EurakaServerApplicationTests

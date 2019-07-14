@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+   
+    <!-- 更多数据访问层的bean定义写在这里 -->
+    <util:properties id="cfg" location="classpath:config.properties"></util:properties>
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+     destroy-method="close">
+    	<!-- 必选参数 -->
+    	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+    	<property name="url" value="jdbc:mysql://localhost:3306/wjl?characterEncoding=utf8"></property>
+    	<property name="username" value="root"></property>
+    	<property name="password" value="root"></property>
+    	<!-- 可选参数 -->
+    </bean>
+    
+    <!-- 配置Mybatis -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource"></property>
+    	<property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+    
+    <!-- 自动扫描mapper包中全部的接口，并且自动地实现接口bean对象，并且在Spring中进行登记，
+    Bean的 ID是类名首字母小写 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    <property name="basePackage" value="cn.tedu.store.mapper"></property>
+    </bean>
+    
+
+</beans>

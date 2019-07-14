@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="cn.tedu.store.mapper.UserMapper" >
+	  
+	<insert id="insertUser" parameterType="cn.tedu.store.entity.User">
+		insert into user(
+		  	id,
+		  	name,
+		  	password,
+		  	email,
+		  	mobile,
+		  	gender,
+		  	create_user,
+		  	modify_user,
+		  	modify_time
+		  ) values(
+		  	#{id},
+		  	#{name},
+		  	#{password},
+		  	#{email},
+		  	#{mobile},
+		  	#{gender},
+		  	#{createUser},
+		  	#{modifyUser},
+		  	#{modifyTime}
+		  )
+	
+	</insert>
+	
+	<select id ="findUserByName" resultType="cn.tedu.store.entity.User">
+		select * from user
+		where name=#{name}
+	</select>
+	
+	<delete id="deleUserById">
+		delete from
+			user
+		where 
+			id in 
+				<foreach collection="id" item="i" open="(" separator="," close=")">
+					#{i}
+				</foreach>
+	</delete>
+
+  
+  </mapper>

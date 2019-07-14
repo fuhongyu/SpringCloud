@@ -1,0 +1,36 @@
+server:
+  port: 8050
+
+spring:
+  application:
+    name: sd-zuul
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:password123@localhost:8761/eureka
+
+logging:
+  level:
+    root: INFO
+
+zuul:
+  ignoredServices: '*'   # 忽略其他请求
+  routes:                # 转向路由配置
+    app-user:            # 无所谓，名称唯一
+      path: /user/**     # 关键，所有需要zuul转发请求前面都加一层路径/user/hello/tony
+      serviceId: consumer-feign  # 找到服务消费着
+
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+ 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 3000
+    
+

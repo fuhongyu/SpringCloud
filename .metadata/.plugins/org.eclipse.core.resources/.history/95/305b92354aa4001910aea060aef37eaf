@@ -1,0 +1,9 @@
+package cn.tedu.controller;
+
+public class HelloController {
+	
+	public String hello(){
+		
+	}
+
+}

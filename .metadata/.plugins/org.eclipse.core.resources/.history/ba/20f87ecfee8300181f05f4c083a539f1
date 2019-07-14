@@ -1,0 +1,16 @@
+package controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class UserController {
+	@RequestMapping("login.do")
+	public String getUser(String username, String password, ModelMap map){
+		System.out.println("收到用户名："+username+";收到密码："+password);
+		map.put("msg",username+"，登陆成功");
+		return "ok";
+	}
+
+}

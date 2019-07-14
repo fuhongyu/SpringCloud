@@ -1,0 +1,6 @@
+package cn.jt.service;
+
+public interface UserService {
+	public boolean check(String param, Integer typeVal); 
+
+}

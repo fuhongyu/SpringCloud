@@ -1,0 +1,39 @@
+package test;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import cn.tedu.store.entity.User;
+import cn.tedu.store.mapper.UserMapper;
+import cn.tedu.store.service.IUserService;
+import cn.tedu.store.service.impl.UserService;
+
+public class TestCase {
+	ClassPathXmlApplicationContext ctx;
+	@Before
+	public void init(){
+		ctx =new ClassPathXmlApplicationContext("spring-mybatis.xml","spring-service.xml");
+		
+	}
+	
+	@After
+	public void closed(){
+		ctx.close();
+	}
+	
+//	@Test
+	public void testCase(){
+		UserMapper mapper = ctx.getBean("userMapper",UserMapper.class);
+		User user = new User(111,1,"fuhongyu","123","131@qq.com","119","image.url","fuhongyu","2017","wjl","2018");
+		int n = mapper.insertUser(user);
+		System.out.println(n);
+	}
+
+	@Test
+	public void testService(){
+		IUserService service = ctx.getBean("userService",IUserService.class);
+		service.regist("fuhongyu111", "12345", "12345", "123@qq", "119");
+	}
+}

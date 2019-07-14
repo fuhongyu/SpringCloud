@@ -1,0 +1,20 @@
+1531293923493	Rename resource 'applicationContext.xml'
+1531294171018	Delete element
+1531296927144	Delete element
+1531297731507	Delete element
+1531297836998	Rename package 'cn.tedu.store.servicce'
+1531297884783	Rename resource 'user.xml'
+1531362241260	Delete element
+1531365739588	Copy file
+1531376865975	Rename resource 'index.html'
+1531377064098	Rename resource 'index.jsp'
+1531464069326	Pull up members to 'IUserService'
+1531467110319	Pull up members to 'IUserService'
+1531532129084	Rename resource 'IGoodsCategory.java'
+1531551208335	Rename resource 'IGoodService.java'
+1531551253615	Rename resource 'IGoodsService.java'
+1531553097069	Rename resource 'IGoodService.java'
+1531553211157	Rename resource 'IGoodsService.java'
+1531553545119	Pull up members to 'IGoodsService'
+1531555574472	Pull up members to 'IGoodsCategoryService'
+1531560151451	Infer generic type arguments

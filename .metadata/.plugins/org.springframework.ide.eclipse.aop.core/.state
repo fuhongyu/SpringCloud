@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="hello"/>
+<aop-project name="sd-customer-client"/>
+<aop-project name="sd-jt-sso"/>
+<aop-project name="sd-zuul"/>
+<aop-project name="sd-provider-user2"/>
+<aop-project name="sd-jt-sso-provider"/>
+</aop-reference-model>

@@ -1,0 +1,9 @@
+package cn.tedu.service;
+
+import java.util.List;
+
+public interface UserService {
+	//²éÑ¯ËùÓĞ
+	public List<User> find();
+
+}

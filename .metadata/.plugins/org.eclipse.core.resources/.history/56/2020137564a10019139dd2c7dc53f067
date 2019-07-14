@@ -1,0 +1,9 @@
+package cn.tedu;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+//标识是一个springboot的项目
+@SpringBootApplication
+public class RunApp {
+
+}

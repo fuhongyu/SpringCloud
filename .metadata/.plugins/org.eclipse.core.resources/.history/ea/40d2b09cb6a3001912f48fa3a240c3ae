@@ -1,0 +1,23 @@
+package cn.tedu.eurakaserver;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+/**
+ * 
+ * @author fhy
+ * time： 2019/7/11
+ * EurekaServer的服务端
+ *
+ */
+@EnableEurekaServer
+@SpringBootApplication
+public class EurekaServerApp {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EurekaServerApp.class, args); 
+    }
+}
+

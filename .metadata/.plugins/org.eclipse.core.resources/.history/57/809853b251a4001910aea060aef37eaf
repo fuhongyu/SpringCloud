@@ -1,0 +1,59 @@
+package cn.tedu;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.ClientHttpResponse;
+
+public class HelloFallback implements FallbackProvider{
+
+	public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
+		return new ClientHttpResponse() {
+			
+			//网页头信息
+			public HttpHeaders getHeaders() {				
+				//创建一个头信息
+				HttpHeaders header = new HttpHeaders();
+				//设置返回格式：json字符串，中文utf-8
+				header.setContentType(MediaType.APPLICATION_JSON_UTF8);
+				return header;
+			}
+			
+			public InputStream getBody() throws IOException {
+				String msg = "4599";
+				//创建一个字节数组的输入流
+				return new ByteArrayInputStream(msg.getBytes());
+			}
+			
+			//状态文字
+			public String getStatusText() throws IOException {
+				
+				return HttpStatus.BAD_REQUEST.toString();
+			}
+			
+			public HttpStatus getStatusCode() throws IOException {
+				return HttpStatus.BAD_GATEWAY;
+			}
+			
+			public int getRawStatusCode() throws IOException {
+				return 0;
+			}
+			
+			public void close() {
+
+				
+			}
+		};
+	}
+
+	public String getRoute() {
+		// TODO Auto-generated method stub
+		return "*";
+	}
+
+}

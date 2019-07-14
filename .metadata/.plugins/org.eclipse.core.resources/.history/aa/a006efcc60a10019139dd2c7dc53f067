@@ -1,0 +1,10 @@
+package cn.tedu.mapper;
+
+import java.util.List;
+
+//mybatis接口，通过注解方式写sql语句，实现CRUD
+public interface UserMapper {
+
+	//查询所有方法
+	public List<User> findAll();
+}

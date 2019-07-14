@@ -1,0 +1,10 @@
+package cn.jt.mapper;
+
+import org.apache.ibatis.annotations.Select;
+
+public interface UserMapper {
+	
+	@Select("select count(*) from tb_user where ${type}=#{param}")
+	public int check(String param, String type);
+
+}

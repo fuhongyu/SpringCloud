@@ -1,0 +1,7 @@
+package cn.tedu;
+
+public class CustomerUserRunApp {
+	public static void main(String[] args) {
+		
+	}
+}

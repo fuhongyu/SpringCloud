@@ -1,0 +1,17 @@
+package cn.tedu.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import cn.jt.common.util.SysResult;
+import cn.tedu.feign.UserFeign;
+
+public class Controller {
+	
+	@Autowired
+	private UserFeign userFeign;
+	
+	public SysResult check(String param, Integer typeVal){
+		return userFeign.check(param, typeVal);
+	}
+
+}

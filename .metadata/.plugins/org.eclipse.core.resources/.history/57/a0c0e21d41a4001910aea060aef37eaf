@@ -1,0 +1,9 @@
+package cn.tedu;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public interface HelloFeign {
+	
+	public String hello(@PathVariable String name);
+}

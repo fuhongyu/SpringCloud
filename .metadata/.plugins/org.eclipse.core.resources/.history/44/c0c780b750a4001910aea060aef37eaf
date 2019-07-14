@@ -1,0 +1,7 @@
+package cn.tedu;
+
+import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
+
+public class HelloFallback implements FallbackProvider{
+
+}

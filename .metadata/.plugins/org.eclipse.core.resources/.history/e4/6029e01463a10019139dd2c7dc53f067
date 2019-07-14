@@ -1,0 +1,8 @@
+package cn.tedu.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller  //返回值变成json格式
+public class UserController {
+
+}

@@ -1,0 +1,13 @@
+package cn.tedu.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+	
+	public String hello(String name){
+		//如何去调用服务的提供者
+		
+	}
+
+}

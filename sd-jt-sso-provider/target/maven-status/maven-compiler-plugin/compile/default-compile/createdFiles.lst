@@ -1,0 +1,7 @@
+cn\jt\common\SysResult.class
+cn\jt\JtSsoProviderRunApp.class
+cn\jt\pojo\User.class
+cn\jt\mapper\UserMapper.class
+cn\jt\service\UserService.class
+cn\jt\controller\UserController.class
+cn\jt\service\UserServiceImpl.class

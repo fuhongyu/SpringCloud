@@ -1,0 +1,27 @@
+package demo;
+
+import java.lang.reflect.Method;
+import java.util.Scanner;
+
+public class JUnit4 {
+	public static void main(String[] args) throws Exception{
+		Scanner in =  new Scanner(System.in);
+		System.out.println("请输入测试案例");
+		String className = in.nextLine();
+		
+		Class cls = Class.forName(className);
+		System.out.println(cls);
+		
+		Object obj = cls.newInstance();
+		
+		Method[] methods = cls.getDeclaredMethods();
+		
+		for(Method method : methods){
+			if(method.getAnnotation(Test.class)!=null && method.getParameterCount()==0){
+				method.setAccessible(true);//打开不可访问的权限，破话封装；
+				method.invoke(obj);
+			}
+		}
+	}
+
+}

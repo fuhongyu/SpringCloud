@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<style type="text/css">
+.imgs img{
+	float: left;
+	width: 180px;
+	border: 1px solid #ddd;
+	padding: 5px;
+	margin: 10px;	
+}
+</style>
+</head>
+<body>
+	<h1>文件上传</h1>
+	<form action="user/upload.do" method="post" enctype="multipart/form-data">
+		<div>
+			<label>姓名：</label>
+			<input type="text" name="name">
+		</div>
+		<div>
+			<label>图片1：</label>
+			<input type="file" name="image1"> 
+		</div>
+		<div>
+			<label>图片2</label>
+			<input type="file" name="image2">
+		</div>
+		<input type="submit">
+	</form>
+	
+	<h1> Ajax 文件上载 </h1>
+	<form id="frm" action="user/uploadFile2.do" method="post" enctype="multipart/form-data">
+		<div>
+			<label>姓名:</label>
+			<input id="name" type="text" name="name">	
+		</div>
+		<div>
+			<label>多个图片</label>
+			<input id="images" type="file" name="images" multiple="multiple">		
+		</div>
+		<input type="submit">
+		<div>
+			<label>已经选择</label>
+			<div id="imgs" class="imgs"></div>		
+			<div id="msg"></div>
+		</div>
+	</form>
+<script type="text/javascript">
+	$(function(){
+		$("#frm").submit(function(){
+			var url = "user/uploadFile2.do"
+			var data = new FormData();
+			data.append("name",$("#name").val());
+			
+			var files = $("#images")[0].files;
+			for(var i=0; i<files.length; i++){
+				var file = file[i];
+				data.append("images", file);
+			}
+			alert(data);
+			
+			$.ajax({
+				url:url,
+				type:"POST",
+				data:data,
+				dataType:"json",
+				processData:false,
+				contentType:false,
+				success:function(result){
+					$("#msg").html(result.message);
+				}
+			});
+			return false;		
+		});
+		
+		$("#images").change(function(){
+			var files = this.files;
+			$("#imgs").empty();
+			for (var i=0; i<files.length; i++){
+				var file = files[i];
+				if(file.type.startsWith("image")){
+					var url = window.URL.createObjectURL(file);
+					var img = new Image();
+					img.src = url;
+					$("#imgs").append(img);
+				}
+			}
+			
+		});
+	});
+
+
+
+</script>
+
+</body>
+</html>

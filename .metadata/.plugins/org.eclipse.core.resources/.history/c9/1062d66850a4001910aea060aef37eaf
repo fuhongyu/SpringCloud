@@ -1,0 +1,18 @@
+package cn.tedu;
+
+import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
+import org.springframework.http.client.ClientHttpResponse;
+
+public class HelloFallback implements FallbackProvider{
+
+	public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
+		// TODO Auto-generated method stub
+		return "*";
+	}
+
+	public String getRoute() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

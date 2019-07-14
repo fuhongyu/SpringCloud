@@ -1,0 +1,74 @@
+package test;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import mapper.UserMapper;
+import pojo.User;
+
+
+public class TestDemo01 {
+	ClassPathXmlApplicationContext ctx;
+	
+	@Before
+	public void init(){
+		ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+	}
+	@After
+	public void destroy(){
+		ctx.close();
+	}
+	@Test
+	public void testDatabase() throws Exception{
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		System.out.println(ctx.getBean("dataSource"));
+		DataSource ds = ctx.getBean("dataSource", DataSource.class);
+		
+		Connection conn = ds.getConnection();
+		String sql = "select * from user";
+		
+		Statement st = conn.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		
+		while(rs.next()){
+			System.out.println(rs.getInt("id")+","+rs.getString("name"));
+		}
+	}
+	
+	@Test
+	public void insertData(){
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		SqlSessionFactory factory = ctx.getBean("sqlSessionFactory",SqlSessionFactory.class);
+		//SqlSession 是mybatis提供的接口
+		SqlSession session = factory.openSession();
+		User user = new User();
+		user.setId(4);
+		user.setName("fhy");
+		int n = session.insert("addUser", user);
+		session.close();
+		System.out.println(n);
+	}
+	
+	@Test
+	public void testUserMapper(){
+		UserMapper userMapper =ctx.getBean("userMapper",UserMapper.class);
+		User user = new User();
+		user.setId(6);
+		user.setName("wang");
+		int n = userMapper.addUser(user);
+		
+	}
+	
+
+}

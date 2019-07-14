@@ -1,0 +1,6 @@
+package cn.tedu;
+
+//标识是一个springboot的项目
+public class RunApp {
+
+}

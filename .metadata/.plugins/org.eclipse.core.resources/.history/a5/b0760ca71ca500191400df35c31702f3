@@ -1,0 +1,22 @@
+package cn.jt.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import cn.jt.common.util.SysResult;
+import cn.jt.feign.UserFeign;
+
+@RestController
+public class UserController {
+	
+	@Autowired
+	private UserFeign userFeign;
+	
+	@RequestMapping("/user/check/{param}/{typeVal}")
+	public SysResult check(@PathVariable String param, @PathVariable Integer typeVal){
+		return userFeign.check(param, typeVal); 
+	}
+
+}

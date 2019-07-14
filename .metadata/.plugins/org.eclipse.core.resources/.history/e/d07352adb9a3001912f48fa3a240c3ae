@@ -1,0 +1,20 @@
+package cn.tedu.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class HelloController {
+	//第一种解决方案，RestTemplate对象
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	public String hello(String name){
+		//如何去调用服务的提供者
+		String url = "";//请求地址
+		restTemplate.getForObject(url, String.class)
+		
+	}
+
+}

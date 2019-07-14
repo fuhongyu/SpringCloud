@@ -1,0 +1,21 @@
+package cn.tedu.serviceImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import cn.tedu.mapper.UserMapper;
+import cn.tedu.pojo.User;
+import cn.tedu.service.UserService;
+
+public class UserServiceImpl implements UserService{
+	//spring ×¢Èë
+	@Autowired
+	private UserMapper userMapper;
+
+	public List<User> find() {
+		// TODO Auto-generated method stub
+		return userMapper.findAll();
+	}
+
+}
