@@ -1,5 +1,6 @@
 # SpringClound 全家桶
-此文档列表内容为： 
+![SpringCloud架构图](https://github.com/fuhongyu/SpringClound/blob/master/Springboot%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg)
+#### 此文档列表内容为： 
 ### 1、sd-eureka-server 注册中心 7900
 ### 2、两个服务提供者：sd-provider-user（7901） 和sd-provider-user2  (7902)
 ### 3、sd-zuul API网关  8050
@@ -8,4 +9,3 @@
 ### 6、sd-jt-sso 实现单点登陆（登陆信息加密放redis）
    ### sd-jt-sso 消费者
    ### sd-jt-sso-provider 生产者
-
